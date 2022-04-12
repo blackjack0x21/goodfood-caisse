@@ -1,21 +1,40 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+    <ion-buttons slot="secondary">
+      <ion-button fill="solid">
+        <ion-icon slot="start" name="person-circle"></ion-icon>
+        Commande
+      </ion-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-title>GoodFood</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button fill="solid">
+        Déconnexion
+        <ion-icon slot="end" name="help-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-row>
+    <ion-col>
+      Enregistrée
+    </ion-col>
+    <ion-col>
+      En préparation
+      <br>#
+    </ion-col>
+    <ion-col>
+      En livraison
+      <br>#
+      <br>#
+    </ion-col>
+    <ion-col>
+      Livrée
+      <br>#
+      <br>#
+      <br>#
+    </ion-col>
+  </ion-row>
 </ion-content>
