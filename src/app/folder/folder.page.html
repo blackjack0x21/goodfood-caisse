@@ -17,24 +17,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-row>
-    <ion-col>
-      Enregistrée
-    </ion-col>
-    <ion-col>
-      En préparation
-      <br>#
-    </ion-col>
-    <ion-col>
-      En livraison
-      <br>#
-      <br>#
-    </ion-col>
-    <ion-col>
-      Livrée
-      <br>#
-      <br>#
-      <br>#
-    </ion-col>
-  </ion-row>
+  <smart-kanban #kanban id="kanban" [collapsible]="collapsible" [dataSource]="dataSource" [columns]="columns">
+  </smart-kanban>
 </ion-content>
