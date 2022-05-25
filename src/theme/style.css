@@ -1,0 +1,16 @@
+.header-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-flex-end {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.logo {
+    width: 6.25em;
+    height: 5em;
+}

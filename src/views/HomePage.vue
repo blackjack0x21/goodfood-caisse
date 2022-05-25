@@ -2,7 +2,19 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title>GoodFood</ion-title>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <img src="../assets/img/logo.png" class="logo">
+            </ion-col>
+            <ion-col class="header-flex-center">
+              <ion-button color="medium">Nouvelle commande</ion-button>
+            </ion-col>
+            <ion-col class="header-flex-end">
+              <ion-button color="medium">Connexion</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-toolbar>
     </ion-header>
     
