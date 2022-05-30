@@ -8,16 +8,17 @@
               <img src="../assets/img/logo.png" class="logo">
             </ion-col>
             <ion-col class="header-flex-center">
-              <ion-button color="medium">Nouvelle commande</ion-button>
+              <ion-button color="medium" @click="open()">Nouvelle commande</ion-button>
+              <DialogWrapper />
             </ion-col>
             <ion-col class="header-flex-end">
-              <ion-button color="medium">Connexion</ion-button>
+              <ion-button color="medium" href="/connexion">Connexion</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>
       </ion-toolbar>
     </ion-header>
-    
+
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
@@ -35,7 +36,8 @@
 <script>
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import { defineComponent } from 'vue';
-import KanbanComponent from '../../components/KanbanComponent.vue'
+import KanbanComponent from '../../components/KanbanComponent.vue';
+import { DialogWrapper } from 'vue3-promise-dialog';
 
 export default defineComponent({
   name: 'HomePage',
@@ -45,8 +47,21 @@ export default defineComponent({
     IonPage,
     IonTitle,
     IonToolbar,
-    KanbanComponent
-  }
+    KanbanComponent,
+    DialogWrapper
+  },
+  setup() {
+    async function open() {
+      if (await confirm('Popup de commande')) {
+        console.log('Valider');
+      } else {
+        console.log('Fermer');
+      }
+    }
+    return {
+      open,
+    };
+  },
 });
 </script>
 
@@ -75,4 +90,23 @@ export default defineComponent({
 #container a {
   text-decoration: none;
 }
+
+.dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+}
+
 </style>
