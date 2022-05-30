@@ -24,7 +24,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-button color="danger">Fermer</ion-button>
+    <ion-button color="danger" onclick="dismissModal()">Fermer</ion-button>
   </ion-content>
 </template>
 
@@ -47,5 +47,6 @@ export default defineComponent({
     ];
     return {items};
   },
+  methods
 });
 </script>
