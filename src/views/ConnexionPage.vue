@@ -23,7 +23,7 @@
 
           <p>
             <label for="psw">Mot de passe</label>
-            <input id="psw" type="text" name="psw">
+            <input id="psw" type="password" name="psw">
           </p>
 
           <p>
