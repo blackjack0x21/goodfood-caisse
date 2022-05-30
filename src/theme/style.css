@@ -1,0 +1,35 @@
+.header-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-flex-end {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.logo {
+    height: 4em;
+}
+
+.modal-size {
+    --width: 80em;
+    --height: 40em;
+}
+
+.border-grid {
+    border: solid 0.1em black;
+    padding: 0;
+    margin: 0;
+}
+
+.border-grid-col {
+    border: solid 0.05em black;
+}
+
+.border-grid-col-title {
+    border: solid 0.05em black;
+    font-weight: bold;
+}
