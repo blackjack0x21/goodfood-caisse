@@ -47,6 +47,5 @@ export default defineComponent({
     ];
     return {items};
   },
-  methods
 });
 </script>
