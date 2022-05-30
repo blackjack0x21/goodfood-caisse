@@ -9,10 +9,9 @@
             </ion-col>
             <ion-col class="header-flex-center">
               <ion-button color="medium" @click="openModal()">Nouvelle commande</ion-button>
-              <DialogWrapper />
             </ion-col>
             <ion-col class="header-flex-end">
-              <ion-button color="medium" href="/connexion">Connexion</ion-button>
+              <ion-button color="medium" href="/connexion" @click="disconnectHandler">Déconnexion</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -63,6 +62,7 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonModal, modalCo
 import { defineComponent } from 'vue';
 import KanbanComponent from '../../components/KanbanComponent.vue';
 import ModalComponent from '../../components/ModalComponent.vue'
+import { supabase } from '../../supabase'
 
 export default defineComponent({
   name: 'HomePage',
@@ -88,6 +88,16 @@ export default defineComponent({
             },
           })
       return modal.present();
+    },
+    async disconnectHandler() {
+      try {
+          const { error } = await supabase.auth.signOut()
+          if (error) {throw error}
+      } 
+      catch(error) {
+          console.log("error is");
+          console.log(error);
+      } 
     },
   },
 });
