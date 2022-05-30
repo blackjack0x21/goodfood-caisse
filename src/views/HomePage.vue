@@ -8,7 +8,7 @@
               <img src="../assets/img/logo.png" class="logo">
             </ion-col>
             <ion-col class="header-flex-center">
-              <ion-button color="medium" @click="open()">Nouvelle commande</ion-button>
+              <ion-button color="medium" @click="openModal()">Nouvelle commande</ion-button>
               <DialogWrapper />
             </ion-col>
             <ion-col class="header-flex-end">
@@ -27,6 +27,31 @@
       </ion-header>
     
       <div id="container">
+        <ion-modal trigger="trigger-button" class="modal-size">
+          <ion-content>
+            <ion-title>Code commande</ion-title>
+            <ion-content>
+              <table class="table-dark">
+                <tr>
+                  <th>
+                    tab
+                  </th>
+                  <td>
+                    tab
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    tab
+                  </th>
+                  <td>
+                    tab
+                  </td>
+                </tr>
+              </table>
+            </ion-content>
+          </ion-content>
+        </ion-modal>
         <kanban-component></kanban-component>
       </div>
     </ion-content>
@@ -34,10 +59,10 @@
 </template>
 
 <script>
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonModal, modalController} from '@ionic/vue';
 import { defineComponent } from 'vue';
 import KanbanComponent from '../../components/KanbanComponent.vue';
-import { DialogWrapper } from 'vue3-promise-dialog';
+import ModalComponent from '../../components/ModalComponent.vue'
 
 export default defineComponent({
   name: 'HomePage',
@@ -47,20 +72,23 @@ export default defineComponent({
     IonPage,
     IonTitle,
     IonToolbar,
-    KanbanComponent,
-    DialogWrapper
+    IonModal,
+    KanbanComponent
   },
-  setup() {
-    async function open() {
-      if (await confirm('Popup de commande')) {
-        console.log('Valider');
-      } else {
-        console.log('Fermer');
-      }
-    }
-    return {
-      open,
-    };
+  methods: {
+    async openModal() {
+      const modal = await modalController
+          .create({
+            component: ModalComponent,
+            cssClass: 'modal-size',
+            backdropDismiss : false,
+            componentProps: {
+              title: 'Numéro de commande',
+              modal: { modal }
+            },
+          })
+      return modal.present();
+    },
   },
 });
 </script>
@@ -90,23 +118,4 @@ export default defineComponent({
 #container a {
   text-decoration: none;
 }
-
-.dialog {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.center {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-}
-
 </style>
