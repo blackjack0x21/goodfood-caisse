@@ -82,9 +82,9 @@ export default defineComponent({
             component: ModalComponent,
             cssClass: 'modal-size',
             backdropDismiss : false,
+            canDismiss : true,
             componentProps: {
-              title: 'Numéro de commande',
-              modal: { modal }
+              title: 'Numéro de commande'
             },
           })
       return modal.present();
