@@ -5,7 +5,7 @@
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
-    <ion-button color="medium">Ajouter une pizza</ion-button>
+    <ion-button color="medium" @click="openModal">Ajouter une pizza</ion-button>
     <ion-grid class="border-grid">
       <ion-row>
         <ion-col class="border-grid-col-title">
@@ -24,19 +24,19 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-button color="danger" onclick="dismissModal()">Fermer</ion-button>
   </ion-content>
 </template>
 
 <script>
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/vue';
+import { IonContent, IonHeader, IonTitle, IonToolbar, modalController } from '@ionic/vue';
 import { defineComponent } from 'vue';
+import AddModalComponent from './AddModalComponent.vue'
 
 export default defineComponent({
   name: 'ModalComponent',
   components: { IonContent, IonHeader, IonTitle, IonToolbar },
   props: {
-    title: { type: String, default: 'Super Modal' },
+    title: { type: String, default: 'Super Modal' }
   },
   data() {
     let items = [
@@ -46,6 +46,23 @@ export default defineComponent({
       {nom : 'mure', quantite : 4},
     ];
     return {items};
+  },
+  methods: {
+    async openModal() {
+      const modal = await modalController
+          .create({
+            component: AddModalComponent,
+            cssClass: 'modal-size',
+            canDismiss: true,
+            isOpen: true,
+            breakpoints: [0.1, 0.5, 1],
+            initialBreakpoint: 0.9,
+            componentProps: {
+              title: 'Ajouter une pizza'
+            },
+          })
+      return modal.present();
+    },
   },
 });
 </script>

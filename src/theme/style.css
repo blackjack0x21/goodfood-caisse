@@ -14,10 +14,12 @@
     height: 4em;
 }
 
+/*
 .modal-size {
     --width: 80em;
     --height: 40em;
 }
+*/
 
 .border-grid {
     border: solid 0.1em black;

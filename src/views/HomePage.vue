@@ -8,7 +8,7 @@
               <img src="../assets/img/logo.png" class="logo">
             </ion-col>
             <ion-col class="header-flex-center">
-              <ion-button color="medium" @click="openModal()">Nouvelle commande</ion-button>
+              <ion-button color="medium" @click="openModal">Nouvelle commande</ion-button>
             </ion-col>
             <ion-col class="header-flex-end">
               <ion-button color="medium" href="/connexion" @click="disconnectHandler">Déconnexion</ion-button>
@@ -24,33 +24,8 @@
           <ion-title size="large">GoodFood</ion-title>
         </ion-toolbar>
       </ion-header>
-    
+
       <div id="container">
-        <ion-modal trigger="trigger-button" class="modal-size">
-          <ion-content>
-            <ion-title>Code commande</ion-title>
-            <ion-content>
-              <table class="table-dark">
-                <tr>
-                  <th>
-                    tab
-                  </th>
-                  <td>
-                    tab
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                    tab
-                  </th>
-                  <td>
-                    tab
-                  </td>
-                </tr>
-              </table>
-            </ion-content>
-          </ion-content>
-        </ion-modal>
         <kanban-component></kanban-component>
       </div>
     </ion-content>
@@ -58,7 +33,7 @@
 </template>
 
 <script>
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonModal, modalController} from '@ionic/vue';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, modalController} from '@ionic/vue';
 import { defineComponent } from 'vue';
 import KanbanComponent from '../../components/KanbanComponent.vue';
 import ModalComponent from '../../components/ModalComponent.vue'
@@ -72,7 +47,6 @@ export default defineComponent({
     IonPage,
     IonTitle,
     IonToolbar,
-    IonModal,
     KanbanComponent
   },
   methods: {
@@ -81,8 +55,10 @@ export default defineComponent({
           .create({
             component: ModalComponent,
             cssClass: 'modal-size',
-            backdropDismiss : false,
-            canDismiss : true,
+            canDismiss: true,
+            isOpen: true,
+            breakpoints: [0.1, 0.5, 1],
+            initialBreakpoint: 1,
             componentProps: {
               title: 'Numéro de commande'
             },
