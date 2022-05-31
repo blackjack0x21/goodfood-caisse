@@ -5,7 +5,16 @@
     </ion-toolbar>
   </ion-header>
   <ion-content class="ion-padding">
-    toto
+    <ion-list>
+        <ion-item v-for="item in items" :key="item.nom">
+          <ion-avatar slot="start">
+            <ion-img :src="item.img"></ion-img>
+          </ion-avatar>
+          <ion-button color="medium">
+            {{ item.nom }}
+          </ion-button>
+        </ion-item>
+    </ion-list>
   </ion-content>
 </template>
 
@@ -21,10 +30,10 @@ export default defineComponent({
   },
   data() {
     let items = [
-      {nom : 'chocolat', quantite : 1},
-      {nom : 'vanille', quantite : 1},
-      {nom : 'fraise', quantite : 2},
-      {nom : 'mure', quantite : 4},
+      {nom : 'Reine', quantite : 1, img : 'https://pngimg.com/uploads/pizza/pizza_PNG44073.png'},
+      {nom : '4 fromages', quantite : 1, img : 'https://pngimg.com/uploads/pizza/pizza_PNG44046.png'},
+      {nom : 'Pêcheur', quantite : 2, img : 'https://pngimg.com/uploads/pizza/pizza_PNG44071.png'},
+      {nom : 'Provencale', quantite : 4, img : 'https://www.pikpng.com/pngl/b/91-911517_cheese-pizza-png-clipart.png'},
     ];
     return {items};
   },

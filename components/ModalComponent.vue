@@ -40,10 +40,10 @@ export default defineComponent({
   },
   data() {
     let items = [
-      {nom : 'chocolat', quantite : 1},
-      {nom : 'vanille', quantite : 1},
-      {nom : 'fraise', quantite : 2},
-      {nom : 'mure', quantite : 4},
+      {nom : 'Reine', quantite : 1, img : ''},
+      {nom : '4 fromages', quantite : 1, img : ''},
+      {nom : 'Pêcheur', quantite : 2, img : ''},
+      {nom : 'Provencale', quantite : 4, img : ''},
     ];
     return {items};
   },
